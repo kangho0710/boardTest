@@ -3,24 +3,31 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hellow.mapper.TestBoardMapper">
+
 	<select id="selectTestBoardList" resultType="com.hellow.vo.TestBoardVO">
 	SELECT TB_NUM, TB_WRITER, TB_REGION, TB_CATEGORY, TB_TITLE,
 	TB_CONTENT,TB_CREDAT, TB_MODDAT, TB_CNT FROM TEST_BOARD
 	<where>
 		TB_ACTIVE=1
-		<if test='tbWriter!=null and tbWriter!="" '>
-			AND TB_WRITER LIKE CONCAT('%', #{tbWriter},'%')
-		</if>
-		
-		<if test='tbTtitle!=null and tbTitle!=""'>
-			AND TB_TITLE LIKE CONCAT('%', #{tbTitle}, '%')
-		</if>
+		<if test='tbTitle!=null and tbTitle!=""'>
+    		AND TB_TITLE LIKE CONCAT('%',#{biTitle},'%')
+    		
+    	</if>
+    	<if test = 'tbContent != null and tbContent!=""'>
+    		AND TB_CONTENT LIKE CONCAT('%',#{tbContent},'%')
+    	</if>
 	</where>
 	</select>
 	
-	INSERT INTO TEST_BOARD(TB_WRITER, TB_REGION, TB_CATEGORY, TB_TITLE,
-TB_CONTENT, TB_CREDAT, TB_MODDAT, TB_ACTIVE)
-VALUES('쓰니', '서울','축구','제목','내용', DATE_FORMAT(NOW(), '%Y%m%d'), DATE_FORMAT(NOW(), '%Y%m%d'),1);
+	<insert id="insertTestBoard">
+		INSERT INTO TEST_BOARD(TB_WRITER, TB_REGION, TB_CATEGORY, TB_TITLE,
+		TB_CONTENT, TB_CREDAT, TB_MODDAT, TB_ACTIVE)
+		VALUES(#{tbWriter}, #{tbRegion}, #{tbCategory}, #{tbTitle}, #{tbContent}, DATE_FORMAT(NOW(), '%Y%m%d'), DATE_FORMAT(NOW(),
+		'%Y%m%d'),1);
+	</insert>
 	
-	
+	<select id="selectTestBoard" resultType="com.hellow.vo.TestBoardVO">
+	SELECT TB_NUM, TB_WRITER, TB_REGION, TB_CATEGORY, TB_TITLE,
+	TB_CONTENT,TB_CREDAT, TB_MODDAT, TB_CNT FROM TEST_BOARD WHERE TB_NUM=#{tbNum}
+	</select>
 </mapper>

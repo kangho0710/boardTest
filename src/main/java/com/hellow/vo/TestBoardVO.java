@@ -13,4 +13,5 @@ public class TestBoardVO {
 	private String tbCredat;
 	private String tbModdat;
 	private int tbCnt;
+	private int tbActive;
 }
