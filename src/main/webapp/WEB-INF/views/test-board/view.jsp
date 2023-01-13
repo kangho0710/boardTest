@@ -8,8 +8,8 @@
 </head>
 <body>
 	<div id = "rDiv"></div>
-	<div id = "btnDiv" style="display:none">
-		<button onclick = "location.href = '/views/test-board/update?biNum=${param.tbNum}'">수정</button>
+	<div id = "btnDiv">
+		<button onclick = "location.href = '/views/test-board/update?tbNum=${param.tbNum}'">수정</button>
 		<button onclick = "deleteTestBoard()">삭제</button>
 	</div>
 	
@@ -24,7 +24,7 @@
 				let html = '';
 				html += '번호 :' + boardInfo.tbNum + '<br>';
 				html += '제목 :' + boardInfo.tbTitle + '<br>';
-				html += '작성자 :' + boardInfo.uiId + '<br>';
+				html += '작성자 :' + boardInfo.tbWriter + '<br>';
 				html += '카테고리 :' + boardInfo.tbCategory + '<br>';
 				html += '지역 :' + boardInfo.tbRegion + '<br>';
 				html += '내용 :' + boardInfo.tbContent + '<br>';

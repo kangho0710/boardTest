@@ -30,4 +30,15 @@
 	SELECT TB_NUM, TB_WRITER, TB_REGION, TB_CATEGORY, TB_TITLE,
 	TB_CONTENT,TB_CREDAT, TB_MODDAT, TB_CNT FROM TEST_BOARD WHERE TB_NUM=#{tbNum}
 	</select>
+	
+	<update id="updateTestBoard">
+		UPDATE TEST_BOARD SET
+		TB_TITLE = #{tbTitle},
+		TB_WRITER = #{tbWriter},
+		TB_REGION = #{tbRegion},
+		TB_CATEGORY = #{tbCategory},
+		TB_CONTENT = #{tbContent},
+		TB_MODDAT = DATE_FORMAT(NOW(), '%Y%m%d')
+		WHERE TB_NUM = #{tbNum}
+	</update>
 </mapper>

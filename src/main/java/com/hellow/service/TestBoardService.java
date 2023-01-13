@@ -24,4 +24,8 @@ public class TestBoardService {
 	public TestBoardVO getTestBoard(int tbNum) {
 		return testBoardMapper.selectTestBoard(tbNum);
 	}
+	
+	public int updateTestBoard(TestBoardVO testBoard) {
+		return testBoardMapper.updateTestBoard(testBoard);
+	}
 }

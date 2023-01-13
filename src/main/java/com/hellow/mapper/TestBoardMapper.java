@@ -11,4 +11,5 @@ public interface TestBoardMapper {
 	TestBoardVO selectTestBoard(int tbNum);
 	List<TestBoardVO>selectTestBoardList(TestBoardVO testBoard);
 	int insertTestBoard(TestBoardVO testBoard);
+	int updateTestBoard(TestBoardVO testBoard);
 }

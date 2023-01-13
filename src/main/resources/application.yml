@@ -15,6 +15,13 @@ spring:
   view:
    prefix: /WEB-INF/
    suffix: .jsp
+ servlet:
+    multipart:
+      location: /java-work/upload
+      max-file-size: 50MB
+      max-request-size: 100MB
+      
+  
 mybatis:
   type-aliases-package: com.hellow.vo
   mapper-locations: mapper/**/*.xml
