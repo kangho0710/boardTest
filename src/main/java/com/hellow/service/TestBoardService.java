@@ -28,4 +28,8 @@ public class TestBoardService {
 	public int updateTestBoard(TestBoardVO testBoard) {
 		return testBoardMapper.updateTestBoard(testBoard);
 	}
+	
+	public int deleteTestBoard(int tbNum) {
+		return testBoardMapper.deleteTestBoard(tbNum);
+	}
 }

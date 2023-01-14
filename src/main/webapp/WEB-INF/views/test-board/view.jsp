@@ -33,9 +33,8 @@
 			});
 		}
 		
-		function deleteBoardInfo(){
-			const spNum = '${param.tbNum}'
-			fetch('/board-infos/${param.tbNum}',{
+		function deleteTestBoard(){
+			fetch('/test-board/${param.tbNum}',{
 				method:'DELETE'
 			})
 			.then(function(res){
@@ -44,7 +43,7 @@
 			.then(function(data){
 				if(data===1){
 					alert('삭제완료');
-					location.href = '/views/board-info/list';
+					location.href = '/views/test-board/list';
 				}
 			});
 		}

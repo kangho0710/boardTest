@@ -11,15 +11,18 @@ spring:
    minimum-idle: 2
    maximum-pool-size: 5
    auto-commit: false
+   
  mvc:
   view:
    prefix: /WEB-INF/
    suffix: .jsp
- servlet:
-    multipart:
-      location: /java-work/upload
-      max-file-size: 50MB
-      max-request-size: 100MB
+  converters:
+   preferred-json-mapper: gson
+# servlet:
+#    multipart:
+#      location: /java-work/upload
+#      max-file-size: 50MB
+#      max-request-size: 100MB
       
   
 mybatis:

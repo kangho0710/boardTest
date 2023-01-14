@@ -41,4 +41,10 @@
 		TB_MODDAT = DATE_FORMAT(NOW(), '%Y%m%d')
 		WHERE TB_NUM = #{tbNum}
 	</update>
+	
+	<delete id="deleteTestBoard">
+	UPDATE TEST_BOARD SET
+	TB_ACTIVE = 0
+	WHERE TB_NUM = #{tbNum};
+	</delete>
 </mapper>
