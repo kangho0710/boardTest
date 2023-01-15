@@ -13,6 +13,12 @@
 		<button onclick = "deleteTestBoard()">삭제</button>
 	</div>
 	
+	<div id ="comment">
+		<input type="text" id = "bcWriter" placeholder="작성자">
+		<input type="text" id = "bcContent" placeholder="댓글">
+		<button>작성</button>
+	</div>
+	
 	<script>
 		window.onload = function(){
 			fetch('/test-board/${param.tbNum}')
@@ -31,6 +37,21 @@
 				document.querySelector('#rDiv').innerHTML = html;
 				
 			});
+			
+			fetch('/board-comment/${param.tbNum}')
+			.then(function(res){
+				return res.json();
+			})
+			.then(function(data){
+				let html = '';
+				for(let obj of data){
+					html += '<div id="comment">'
+					html += '<input type ="text" id="bcWriter">' + obj.bcWriter;
+					html += '<input type ="text" id="bcContent">' + obj.bcContent;
+					html += '</div>'
+				}
+				document.querySelector('#comment').innerHTML=html;
+			});
 		}
 		
 		function deleteTestBoard(){
@@ -47,6 +68,7 @@
 				}
 			});
 		}
+		
 		
 		
 	</script>

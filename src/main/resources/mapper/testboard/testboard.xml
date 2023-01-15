@@ -43,8 +43,16 @@
 	</update>
 	
 	<delete id="deleteTestBoard">
-	UPDATE TEST_BOARD SET
-	TB_ACTIVE = 0
-	WHERE TB_NUM = #{tbNum};
+		UPDATE TEST_BOARD SET
+		TB_ACTIVE = 0
+		WHERE TB_NUM = #{tbNum};
 	</delete>
+	
+	
+	<update id="cntTestBoard"> <!-- 조회수 추가  -->
+	UPDATE TEST_BOARD SET
+	TB_CNT = TB_CNT+1
+	WHERE TB_NUM = #{tbNum};
+	</update>
+	
 </mapper>

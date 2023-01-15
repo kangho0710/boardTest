@@ -22,6 +22,7 @@ public class TestBoardService {
 	}
 	
 	public TestBoardVO getTestBoard(int tbNum) {
+		testBoardMapper.cntTestBoard(tbNum);
 		return testBoardMapper.selectTestBoard(tbNum);
 	}
 	
@@ -32,4 +33,5 @@ public class TestBoardService {
 	public int deleteTestBoard(int tbNum) {
 		return testBoardMapper.deleteTestBoard(tbNum);
 	}
+	
 }
