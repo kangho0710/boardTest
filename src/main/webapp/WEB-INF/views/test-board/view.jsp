@@ -5,20 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="/WEB-INF/views/common/import.jsp"%>
 </head>
 <body>
 	<div id = "rDiv"></div>
+	
 	<div id = "btnDiv">
 		<button onclick = "location.href = '/views/test-board/update?tbNum=${param.tbNum}'">수정</button>
 		<button onclick = "deleteTestBoard()">삭제</button>
 	</div>
 	
-	<div id ="comment">
-		<input type="text" id = "bcWriter" placeholder="작성자">
-		<input type="text" id = "bcContent" placeholder="댓글">
-		<button>작성</button>
-	</div>
 	
+	<input type = "text" id = "bcWriter" placeholder ="작성자">
+	<input type = "text" id = "bcContent" placeholder ="내용">
+	<button onclick = "insertComment()">댓글 작성</button>
+
+
+
 	<script>
 		window.onload = function(){
 			fetch('/test-board/${param.tbNum}')
@@ -38,21 +41,32 @@
 				
 			});
 			
-			fetch('/board-comment/${param.tbNum}')
+		}
+		
+		function insertComment(){
+			let param ={};
+			param.bcWriter = document.querySelector('#bcWriter').value;
+			param.bcContent = document.querySelector('#bcContent').value;
+			
+			fetch('/board-comment',{
+				method : 'POST',
+				headers :{
+					'Content-Type' : 'application/json'
+				},
+				body : JSON.stringify(param)
+			})
 			.then(function(res){
 				return res.json();
 			})
 			.then(function(data){
-				let html = '';
-				for(let obj of data){
-					html += '<div id="comment">'
-					html += '<input type ="text" id="bcWriter">' + obj.bcWriter;
-					html += '<input type ="text" id="bcContent">' + obj.bcContent;
-					html += '</div>'
+				if(data===1){
+					alert("작성완료");
+				} else{
+					alert('작성실패');
 				}
-				document.querySelector('#comment').innerHTML=html;
-			});
+			})
 		}
+		
 		
 		function deleteTestBoard(){
 			fetch('/test-board/${param.tbNum}',{

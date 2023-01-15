@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.boardcomment.BoardCommentMapper">
+<mapper namespace="com.hellow.mapper.BoardCommentMapper">
 	<select id="getBoardComment" resultType="com.hellow.vo.BoardCommentVO">
 		SELECT BC_WRITER, BC_CONTENT, BC_MODDAT
 		FROM BOARD_COMMENT WHERE BC_ACTIVE =1 AND TB_NUM = #{tbNum}
@@ -8,8 +8,8 @@
 	
 	<insert id="insertBoardComment">
 		INSERT INTO BOARD_COMMENT
-		(TB_NUM, BC_WRITER, BC_CREDAT, BC_MODDAT, BC_ACTIVE)
-		VALUES(#{tbNum}, #{bcWriter}, DATE_FORMAT(NOW(), '%Y%m%d'), DATE_FORMAT(NOW(), '%Y%m%d'), 1)
+		(TB_NUM, BC_WRITER, BC_CONTENT, BC_CREDAT, BC_MODDAT, BC_ACTIVE)
+		VALUES(#{tbNum}, #{bcWriter}, #{bcContent}, DATE_FORMAT(NOW(), '%Y%m%d'), DATE_FORMAT(NOW(), '%Y%m%d'), 1)
 	</insert>
 	
 	<update id="updateBoardComment">

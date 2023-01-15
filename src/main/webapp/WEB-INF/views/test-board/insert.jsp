@@ -41,7 +41,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2"><textarea class="summernote" id="tbContent" name="memo"></textarea>
+			<td colspan="2"><textarea class="summernote" id="tbContent" name="memo" style="resize: none"></textarea>
 			</td>
 		</tr>
 		<tr>

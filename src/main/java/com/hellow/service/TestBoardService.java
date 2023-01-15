@@ -34,4 +34,8 @@ public class TestBoardService {
 		return testBoardMapper.deleteTestBoard(tbNum);
 	}
 	
+	public int count() {
+		return testBoardMapper.count();
+	}
+	
 }

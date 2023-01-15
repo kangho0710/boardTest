@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%@ include file="/WEB-INF/views/common/import.jsp"%>
 </head>
 <body>
 	<input type = "text" id = "tbTitle" placeholder = "제목">
@@ -12,9 +13,8 @@
 		<button onclick = "getBoardLists()">조회</button>
 		
 	
-	<table border = "1">
+	<table class ="table table-striped" border = "1">
 		<tr>
-			<th>번호</th>
 			<th>카테고리</th>
 			<th>지역</th>
 			<th>작성자</th>
@@ -39,8 +39,7 @@
 			let html = '';
 			for(let i = 0; i<data.length; i++){
 				const boardList =data[i];
-				html += '<tr>' ;
-				html +='<td>' + boardList.tbNum + '</td>';
+				html += '<tr>';
 				html +='<td>' + boardList.tbCategory + '</td>';
 				html +='<td>' + boardList.tbRegion + '</td>';
 				html +='<td>' + boardList.tbWriter + '</td>';

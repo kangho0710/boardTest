@@ -14,4 +14,5 @@ public interface TestBoardMapper {
 	int updateTestBoard(TestBoardVO testBoard);
 	int deleteTestBoard(int tbNum);
 	void cntTestBoard(int tbNum);
+	int count();
 }

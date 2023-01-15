@@ -55,4 +55,8 @@
 	WHERE TB_NUM = #{tbNum};
 	</update>
 	
+	<select id="count" resultType="com.hellow.vo.TestBoardVO"> <!-- 게시물 총 갯수 -->
+		SELECT COUNT(TB_NUM) FROM TEST_BOARD WHERE TB_ACTIVE=1
+	</select>
+	
 </mapper>
