@@ -2,8 +2,10 @@ package com.hellow.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +25,18 @@ public class LogAOP {
 		log.debug("end==>{}", signatureInfo);
 		log.debug("executeTime=>{}", (eTime-sTime)/1000.00);
 		return obj;
-	}
+	} //이건 알자
+	
+//	@Before("@within(@org.springframework.web.bind.annotation.RestController *)")
+//	public void beforeController(JoinPoint joinPoint) {
+//		log.debug("before controller");
+//	}
+//	
+//	@After("@within(@org.springframework.web.bind.annotation.RestController *)")
+//	public void afterController(JoinPoint joinPoint) {
+//		log.debug("after controller");
+//	}
+	
 	
 	private String getSignatureInfo(JoinPoint joinPoint) {
 		String signatureName = joinPoint.getSignature().getName();
