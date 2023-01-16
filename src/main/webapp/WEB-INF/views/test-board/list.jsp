@@ -42,8 +42,8 @@
 				html += '<tr>';
 				html +='<td>' + boardList.tbCategory + '</td>';
 				html +='<td>' + boardList.tbRegion + '</td>';
-				html +='<td>' + boardList.tbWriter + '</td>';
 				html += '<td><a href="/views/test-board/view?tbNum=' + boardList.tbNum + '">' + boardList.tbTitle + '</a></td>';
+				html +='<td>' + boardList.tbWriter + '</td>';
 				html +='<td>' + boardList.tbCnt + '</td>';
 				html +='<td>' + boardList.tbCredat + '</td>';
 				html += '</tr>';

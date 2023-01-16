@@ -6,19 +6,70 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/common/import.jsp"%>
+
+<style>
+	.container{
+		margin-top: 10px;
+	}
+  #btn{
+	float: right;
+	margin-top: 10px;
+  }
+
+  #comment{
+	padding-top: 10px;
+  }
+
+
+</style>
+
 </head>
 <body>
-	<div id = "rDiv"></div>
-	
-	<div id = "btnDiv">
-		<button onclick = "location.href = '/views/test-board/update?tbNum=${param.tbNum}'">수정</button>
-		<button onclick = "deleteTestBoard()">삭제</button>
+<div>
+
+<div class="container">
+			<div class="card">
+				<div class="card-body">
+					<p class="card-text"> 
+						<small class="text-muted" id="tbWriter"></small><!--글쓴이-->
+					</p>
+					<h5 class="card-title"></h5> <!--제목--> 
+					<span class="card-text"> 
+						<small class="text-muted" id="tbCategory"></small><!--카테고리-->
+					</span>
+			<span class="card-text"> 
+				<small class="text-muted" id="tbCnt"></small><!--조회수-->
+			</span>
+			<p class="card-text"> 
+				<small class="text-muted" id="tbModdat"></small><!--날짜-->
+			</p>
+			<p class="card-text" id="tbContent"></p><!--내용-->
+		</div>
 	</div>
 	
+	<div id="btn"> 
+		<button class="btn btn-primary" onclick = "location.href = '/views/test-board/update?tbNum=${param.tbNum}'">수정</button>
+		<button class="btn btn-primary" onclick = "deleteTestBoard()">삭제</button>
+	</div>
 	
-	<input type = "text" id = "bcWriter" placeholder ="작성자">
+	<div class="input-group" id="comment">
+		<span class="input-group-text">댓글</span>
+		<textarea class="form-control" aria-label="With textarea"></textarea>
+	  </div>
+</div>
+	
+</div>
+
+	
+	<!-- <div id = "btnDiv">
+		<button onclick = "location.href = '/views/test-board/update?tbNum=${param.tbNum}'">수정</button>
+		<button onclick = "deleteTestBoard()">삭제</button>
+	</div> -->
+	
+	
+	<!-- <input type = "text" id = "bcWriter" placeholder ="작성자">
 	<input type = "text" id = "bcContent" placeholder ="내용">
-	<button onclick = "insertComment()">댓글 작성</button>
+	<button onclick = "insertComment()">댓글 작성</button> -->
 
 
 
@@ -30,15 +81,12 @@
 			})
 			.then(function(boardInfo){
 				console.log(boardInfo)
-				let html = '';
-				html += '번호 :' + boardInfo.tbNum + '<br>';
-				html += '제목 :' + boardInfo.tbTitle + '<br>';
-				html += '작성자 :' + boardInfo.tbWriter + '<br>';
-				html += '카테고리 :' + boardInfo.tbCategory + '<br>';
-				html += '지역 :' + boardInfo.tbRegion + '<br>';
-				html += '내용 :' + boardInfo.tbContent + '<br>';
-				document.querySelector('#rDiv').innerHTML = html;
-				
+				document.querySelector('#tbCnt').innerHTML = boardInfo.tbCnt;
+				document.querySelector('#tbCategory').innerHTML = boardInfo.tbCategory;
+				document.querySelector('#tbWriter').innerHTML = boardInfo.tbWriter;
+				document.querySelector('.card-title').innerHTML = boardInfo.tbTitle;
+				document.querySelector('#tbModdat').innerHTML = boardInfo.tbModdat;
+				document.querySelector('#tbContent').innerHTML = boardInfo.tbContent;
 			});
 			
 		}
