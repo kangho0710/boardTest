@@ -17,11 +17,11 @@ spring:
    suffix: .jsp
   converters:
    preferred-json-mapper: gson
- servlet:
-   multipart:
-      location: /java-work/upload
-      max-file-size: 50MB
-      max-request-size: 100MB
+# servlet:
+#   multipart:
+#      location: /java-work/upload
+#      max-file-size: 50MB
+#      max-request-size: 100MB
       
   
 mybatis:
