@@ -10,7 +10,6 @@ spring:
   hikari:
    minimum-idle: 2
    maximum-pool-size: 5
-   auto-commit: false
    
  mvc:
   view:
@@ -18,11 +17,11 @@ spring:
    suffix: .jsp
   converters:
    preferred-json-mapper: gson
-# servlet:
-#    multipart:
-#      location: /java-work/upload
-#      max-file-size: 50MB
-#      max-request-size: 100MB
+ servlet:
+   multipart:
+      location: /java-work/upload
+      max-file-size: 50MB
+      max-request-size: 100MB
       
   
 mybatis:
