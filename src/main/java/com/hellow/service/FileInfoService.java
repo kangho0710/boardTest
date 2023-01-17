@@ -34,6 +34,7 @@ public class FileInfoService {
 		File tmpFile = new File(fiPath);
 		mf.transferTo(tmpFile);
 		int result = fileInfoMapper.insertFileInfo(fileInfo);
+		fileInfo.setFiName(null);
 		result += fileInfoMapper.insertFileInfo(fileInfo);
 		return result;
 	}
