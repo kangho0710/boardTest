@@ -12,7 +12,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hellow.vo.AsyncVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class CallRestController {
 	private static final String url = "http://192.168.0.31/async/";
 
@@ -22,8 +25,13 @@ public class CallRestController {
 	@GetMapping("/call/{cnt}") //중간서버
 	public AsyncVO getCall(@PathVariable("cnt") int cnt) throws JsonMappingException, JsonProcessingException {
 		RestTemplate rest = new RestTemplate();
-		ResponseEntity<String> res = rest.getForEntity(url+cnt, String.class);
+		ResponseEntity<String> res = rest.getForEntity(url+cnt+"/최강호", String.class);
 		AsyncVO async = om.readValue(res.getBody(), AsyncVO.class);
 		return async;
+	}
+	
+	@GetMapping("/hook/{key}")
+	public void hook(@PathVariable("key")String key) {
+		log.debug("key=>{}", key);
 	}
 }
