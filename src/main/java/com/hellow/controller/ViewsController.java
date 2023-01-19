@@ -1,5 +1,7 @@
 package com.hellow.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,7 +14,8 @@ public class ViewsController {
 	}
 	
 	@GetMapping("/views/**") //화면만 이동할거면 굳이 하나씩 매핑할 필요 없음
-	public void goPage() {
-		
+	public String goPage(HttpServletRequest request) {
+		String uri = request.getRequestURI();
+		return uri.substring(1);
 	}
 }
